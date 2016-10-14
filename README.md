@@ -2,7 +2,7 @@
  [Original Readme](Readme.swagger.md)
 
 ## Material Design UI
- [Original Fork](https://www.google.com/url?q=https%3A%2F%2Fgithub.com%2FMagLoft%2Fswagger-ui%2Ftree%2Ffeature-material&sa=D&sntz=1&usg=AFQjCNFoAlyGcgqQApcZpaLWV51n5vL79w)
+ [Original Fork](https://github.com/MagLoft/swagger-ui/tree/feature-material)
 
 ## Enhanced by Shannon Code
  

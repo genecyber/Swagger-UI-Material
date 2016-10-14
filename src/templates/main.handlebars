@@ -1,8 +1,8 @@
-<div class="navbar-fixed">
+<div class="navbar-fixed" style="{{#if isTemplate}}display:none;{{/if}}">
   <nav id="header">
     <div class="nav-wrapper">
       <a href="#" data-activates="sidebar" class="button-collapse"><i class="material-icons">menu</i></a>
-      <a id="logo" href="http://swagger.io">swagger</a>
+      <a id="logo" href="http://loyyal.com">Loyyal API</a>
       <div class="spacer"></div>
       <form id='api_selector'>
         <div class="input-field">
@@ -26,7 +26,7 @@
   </div>
 </main>
 
-<ul id="sidebar" class="side-nav fixed">
+<ul id="sidebar" class="side-nav fixed" style="{{#if isTemplate}}display:none;{{/if}}">
   {{#if info}}
     <li class="sidebar-header">
       {{#if info.contact}}
@@ -62,7 +62,7 @@
   {{/if}}  
 </ul>
 
-<footer class="page-footer">
+<footer class="page-footer" style="{{#if isTemplate}}display:none;{{/if}}">
   <div class="footer-copyright">
     <div class="container">
       © 2016 swagger.io

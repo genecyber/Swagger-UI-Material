@@ -1,16 +1,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" media="screen">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" rel="stylesheet" type="text/css" media="screen">
-    <link href="swagger-ui.min.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="assets/css/swagger-ui.min.css" rel="stylesheet" type="text/css" media="screen">
     <style>
       #header, footer, main {
             padding-left: 0px !important;
        }
     </style>
-    <script src="swagger-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/swagger-ui.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/mode-json.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/mode-xml.js" type="text/javascript" charset="utf-8"></script>
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/mode-json.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/mode-xml.js" type="text/javascript" charset="utf-8"></script-->
 
     <script type="text/javascript">
       $(function () {
@@ -19,7 +19,7 @@
         if (url && url.length > 1) {
           url = decodeURIComponent(url[1]);
         }else{
-          url = "http://169.44.115.143/proxy/api/local.yaml";
+          url = "proxy/api/local.yaml";
         }
 
         hljs.configure({
@@ -34,10 +34,10 @@
           url: url,
           supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
           validatorUrl: false,
-          isTemplate: false,
+          isTemplate: true,
           onComplete: function(swaggerApi, swaggerUi) {
             
-            $('.button-collapse').sideNav({menuWidth: 300});
+            //$('.button-collapse').sideNav({menuWidth: 300});
             $('ul.tabs').tabs();
             $('select').material_select();
             $('.collapsible').collapsible({accordion: false});
@@ -98,7 +98,7 @@
                 for (var key in  swaggerUi.api.apis.Ledger.apis) {
                   swaggerUi.api.apis.Ledger.apis[key].host = 
                     window.location.hostname + 
-                    ":"+window.location.port +
+                    ":"+window.location.port + "proxy/api/" +
                     (()=>{ if (window.location.pathname === "/") return "" ; else return window.location.pathname })() 
                   //swaggerUi.api.apis.Ledger.apis[key].host = window.location.hostname + ":" + window.location.port
                   swaggerUi.api.apis.Ledger.apis[key].scheme = location.protocol.replace(":","")
@@ -116,12 +116,12 @@
         }
       }
       function getDefaultNode(cb) {
-        $.get("v1/defaultNode", function(data){
+        $.get("proxy/api/v1/defaultNode", function(data){
             return cb(data)
         })
       }
       function getTestToken(cb) {
-        $.get('v1/auth?username=foo&password=bar', function(token) {
+        $.get('proxy/api/v1/auth?username=foo&password=bar', function(token) {
           return cb(token)
         })
       }

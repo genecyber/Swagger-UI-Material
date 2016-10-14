@@ -37,11 +37,11 @@ ul.operations {
       
     }
     
-    &.get a.http_method { background: #0fa5b4; }
-    &.put a.http_method { background: #c5862b; }
-    &.post a.http_method { background: #10a54a; }
-    &.batch a.http_method { background: #0fa5b4; }
-    &.delete a.http_method { background: #A41E22; }
+    &.get a.http_method { background: #34b5dc; }
+    &.put a.http_method { background: #ffc107; }
+    &.post a.http_method { background: #1dbc9c; }
+    &.batch a.http_method { background: #34b5dc; }
+    &.delete a.http_method { background: #cd4237; }
     
     &.active {
       margin-bottom: 16px;
@@ -52,11 +52,11 @@ ul.operations {
       a.summary {
         color: rgba(255,255,255,0.75);
       }
-      &.get .heading { background: #0fa5b4; }
-      &.put .heading { background: #c5862b; }
-      &.post .heading { background: #10a54a; }
-      &.batch .heading { background: #0fa5b4; }
-      &.delete .heading { background: #A41E22; }
+      &.get .heading { background: #34b5dc; }
+      &.put .heading { background: #ffc107; }
+      &.post .heading { background: #1dbc9c; }
+      &.batch .heading { background: #34b5dc; }
+      &.delete .heading { background: #cd4237; }
     }
     
     div.authorize-wrapper {

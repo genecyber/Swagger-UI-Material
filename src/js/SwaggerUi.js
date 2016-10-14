@@ -118,7 +118,8 @@ window.SwaggerUi = Backbone.Router.extend({
 
     this.mainView = new SwaggerUi.Views.MainView({
       model: this.api,
-      el: $('body'),
+      //el: $('body'),
+      el: $('.swagger-body'),
       swaggerOptions: this.options,
       router: this
     }).render();

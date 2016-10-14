@@ -45,6 +45,7 @@ module.exports = (grunt) => {
       dist: {
         files: {
           'dist/index.html': 'src/index.dist.html',
+          'dist/swagger.handlebars': 'src/index.handlebars.html',
           'dist/favicon.ico': 'src/favicon.ico'
         } 
       }

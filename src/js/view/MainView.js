@@ -58,6 +58,11 @@ SwaggerUi.Views.MainView = Backbone.View.extend({
       });
     }
 
+    if ('isTemplate' in this.options.swaggerOptions) {
+      this.model.isTemplate = this.options.swaggerOptions.isTemplate
+    }
+
+
     if ('validatorUrl' in this.options.swaggerOptions) {
       // Validator URL specified explicitly
       this.model.validatorUrl = this.options.swaggerOptions.validatorUrl;

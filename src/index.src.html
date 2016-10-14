@@ -2,19 +2,17 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Swagger UI</title>
-
+    <title>Swagger UI src</title>
     <!-- start auto template tags -->
     <!-- end auto template tags -->
-
     <script type="text/javascript">
       $(function () {
-
+        //from src
         var url = window.location.search.match(/url=([^&]+)/);
         if (url && url.length > 1) {
           url = decodeURIComponent(url[1]);
         }else{
-          url = "swagger.json";
+          url = "http://169.44.115.143/proxy/api/local.yaml";
         }
 
         hljs.configure({
@@ -58,9 +56,63 @@
           showRequestHeaders: true
         });
 
-        window.swaggerUi.load();
-      });
+        window.swaggerUi.load()
+        setTimeout(function(){
+          getTestToken(function(token) {
+            $("input[name='token']").val(token.token)
+          })
+
+          if (window.location.search == "?sandbox") {
+            for (var key in  swaggerUi.api.apis.Ledger.apis) {
+              swaggerUi.api.apis.Ledger.apis[key].host = window.location.hostname + ":" + window.location.port
+              swaggerUi.api.apis.Ledger.apis[key].scheme = location.protocol.replace(":","")
+            }
+            $("input[name='host']").val("http://"+window.location.hostname +":"+Number(Number(window.location.port)+1))
+          } else if (window.location.search == "?staging")  {
+            for (var key in  swaggerUi.api.apis.Ledger.apis) {
+              swaggerUi.api.apis.Ledger.apis[key].host = window.location.hostname + ":" + window.location.port
+              swaggerUi.api.apis.Ledger.apis[key].scheme = location.protocol.replace(":","")
+            }
+            $("input[name='host']").val("http://"+window.location.hostname +":8545")
+          } else {
+            if(window.location.search.indexOf('host=') > 0) {
+              var host = window.location.search.split('=')[1]
+              host = host.split('&')[0]
+              for (var key in  swaggerUi.api.apis.Ledger.apis) {
+                swaggerUi.api.apis.Ledger.apis[key].host = window.location.hostname + ":" + window.location.port
+                swaggerUi.api.apis.Ledger.apis[key].scheme = location.protocol.replace(":","")
+              }
+              $("input[name='host']").val(host)
+            } else {
+              getDefaultNode(function(node){
+                for (var key in  swaggerUi.api.apis.Ledger.apis) {
+                  swaggerUi.api.apis.Ledger.apis[key].host = window.location.hostname + ":"+window.location.port+ window.location.pathname
+                  //swaggerUi.api.apis.Ledger.apis[key].host = window.location.hostname + ":" + window.location.port
+                  swaggerUi.api.apis.Ledger.apis[key].scheme = location.protocol.replace(":","")
+                }
+                $("input[name='host']").val(node)
+                console.log(node)
+              })
+            }
+          }
+        }, 500)
+      })
+      function log() {
+        if ('console' in window) {
+          console.log.apply(console, arguments);
+        }
+      }
+        function getDefaultNode(cb) {
+        $.get("v1/defaultNode", function(data){
+            return cb(data)
+        })
+      }
+      function getTestToken(cb) {
+        $.get('v1/auth?username=foo&password=bar', function(token) {
+          return cb(token)
+        })
+      }
     </script>
   </head>
-  <body></body>
+  <body>   </body>
 </html>
