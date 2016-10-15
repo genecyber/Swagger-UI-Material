@@ -4,10 +4,10 @@ div#resources {
   & > div.resource {
     margin: 0;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    background-color: #fff;
     
     &.active {
       position: relative;
-      background-color: #fff;
       transition: box-shadow .25s;
       border-radius: 2px;
       box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
@@ -26,8 +26,8 @@ div#resources {
         flex: 1;
         
         a {
-          font-weight: bold;
-          /*color: #EE6E73;*/
+          /*font-weight: bold;
+          color: #EE6E73;*/
         }
       }
       
